@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="version" content="1.2.3">
+    <title>Upwarp Calculator</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg?" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+
+  <body class = "stackedit">
+    <div class = "main_div">
+      <h1>Upwarp Calculator</h1>
+      <h4>by Xiivler</h4>
+      <p>This tool can be used to determine the greatest possible upwarp, or whether a specific upwarp is possible. If Mario has a negative vertical velocity, greater upwarps may be possible than what this tool reports. If you are trying to actually TAS a specific upwarp, it's best to use the "calculate if upwarp is possible" option, but the "calculate max upwarp" option is useful for strategizing. </p>
+
+      <input type="radio" id="max" name ="calc" checked onchange='updateLayout()'>
+      <label for="max">Calculate Max Upwarp</label><br>
+      <input type="radio" id="possible" name ="calc" unchecked onchange='updateLayout()'>
+      <label for="possible">Calculate if Upwarp is Possible</label><br>
+
+      <p>
+      Diving:<br>
+      <input type="radio" id="dyes" name ="dive" checked onchange='updateLayout()'>
+      <label for="dyes">Yes</label><br>
+      <input type="radio" id="dno" name ="dive" unchecked onchange='updateLayout()'>
+      <label for="dno">No</label><br>
+    </p>
+      
+      <p id="Specs">
+        <label>Rotation relative to ledge: </label><input type="text" id="rot" value="0" style='width:20%'> (0 is facing ledge, 90 is parallel to ledge) <br>
+        <label id="hvellabel">Horizontal velocity: </label><input type="text" id="hvel" value="20" style='width:20%'><br>
+        <label>Vertical velocity on upwarp frame: </label><input type="text" value="0" id="vvel" style='width:20%'><br>
+        <label>Y-position of platform: </label><input type="text" value="1000" id="yplat" style='width:20%'><br>
+        <label id="ylabel">Y-position of Mario 1 frame before upwarp: </label><input type="text" value="1000" id="ymario" style='width:20%'>
+      </p>
+      <button id="calcUpwarp" onclick="run()">Calculate</button><br>
+      <p id="MaxResults">
+        <label>Maximum upwarp: </label><input type="text" id="uw" style='width:20%' readonly><br>
+        <label>Maximum upwarp (including vertical velocity): </label><input type="text" id="uwi" style='width:20%' readonly><br>
+        <label>Ideal distance from ledge 1 frame before upwarp: </label><input type="text" id="dist" style='width:15%' readonly><br>
+        <label>Ideal distance from ledge 2 frames before upwarp: </label><input type="text" id="dist2" style='width:15%' readonly><br>
+        <label>Minimum Y-position 1 frame before upwarp: </label><input type="text" id="ypos" style='width:20%' readonly><br>
+        <br>The goal is to make Mario as close as possible to the ledge without hitting it the frame before the upwarp. To ensure that Mario does not hit the ledge on this frame, make sure your distance from the ledge 2 frames before the upwarp is the value listed above. 
+      </p>
+      <p id="PossibleResults" style="display:none">
+        <label>Is possible: </label><input type="text" id="poss" style='width:20%' readonly><br>
+        <label>Minimum distance from ledge 2 frames before upwarp: </label><input type="text" id="dist3" style='width:15%' readonly><br>
+        <label>Maximum distance from ledge 2 frames before upwarp: </label><input type="text" id="dist4" style='width:15%' readonly><br>
+        <br>These values assume Mario's horizontal velocity remains constant.<br>
+      </p>
+
+    <script src="main.js"></script>
+  </body>
+</html>
