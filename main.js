@@ -36,6 +36,7 @@ function updateLayout() {
 
 function run() {
     vy1 = parseFloat(document.getElementById('vvel').value);
+    rot = parseFloat(document.getElementById('rot').value);
     var hvel = parseFloat(document.getElementById('hvel').value);
     if (isDive) {
         vf = hvel * Math.cos(rot * Math.PI / 180);
@@ -43,7 +44,6 @@ function run() {
     else {
         vf = hvel;
     }
-    rot = parseFloat(document.getElementById('rot').value);
     var yplat = parseFloat(document.getElementById('yplat').value);
     var ymario = parseFloat(document.getElementById('ymario').value);
     console.log(vy1);
